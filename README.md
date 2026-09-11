@@ -19,18 +19,6 @@ A working research prototype based on the supplied five-layer construction-safet
 
 <img width="707" height="347" alt="image" src="https://github.com/user-attachments/assets/55683dd2-cabe-4328-8725-6b553b0b4ec8" />
 
-
-
-```powershell
-$env:OPENROUTER_API_KEY = Read-Host 'OpenRouter API key' -MaskInput
-$env:OPENROUTER_MODEL = Read-Host 'Exact OpenRouter model ID supporting structured outputs'
-$env:APP_ACCESS_TOKEN = Read-Host 'Choose a long private demo access token' -MaskInput
-.\.venv\Scripts\python.exe backend_server.py
-```
-
-
-
-
 ## Demonstrate the prototype
 
 1. Generate seed **42** in procedural mode. Inspect a module’s condition, recommended action and source link.
@@ -43,10 +31,7 @@ $env:APP_ACCESS_TOKEN = Read-Host 'Choose a long private demo access token' -Mas
 ## Scope and interpretation
 
 The supported setting is a **24 × 20 m generic teaching yard** with five curated modules: an elevated unprotected edge, exposed electrical parts, overhead-object head-protection exposure, an occupied soil trench, and grinding without eye/face protection. Natural-language keywords and explicit focus control required categories. The LLM can select a mix; it cannot invent geometry, citations or safety advice. Prompts for a roof or actual BIM model are not fulfilled as real site geometry and the UI says so.
-
 The server checks catalog pairing, scoped conditions, finite geometry, site bounds, 1 m module separation, category coverage and approach-point reachability on a 0.5 m grid with a 0.35 m observer allowance. A deterministic seed reproduces the procedural result; live model selection is not guaranteed reproducible. Export the full scene and composer output for replay/provenance.
-
-
 The browser retains a category profile and the last 100 sessions in local storage. Older sessions are removed while cumulative profile counts remain. Data are not shared across devices or uploaded to a research database. Exports contain the prompt, scenario and profile; use synthetic examples for demonstrations.
 
 ## Project files
