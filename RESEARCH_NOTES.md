@@ -1,14 +1,12 @@
 # Research alignment and demonstration guidance
 
-The strongest presentation is a working, bounded implementation with inspectable evidence. Describe this version as **a constraint-validated procedural prototype with optional LLM composition and heuristic adaptation**. It is not yet the complete learned PCGML system in the proposal.
+This presentation is a working, bounded implementation with inspectable evidence. Describe this version as **a constraint-validated procedural prototype with optional LLM composition and heuristic adaptation**. It is not yet the complete learned PCGML system in the proposal.
 
-## What changed from the supplied code
-
-The original backend parsed a JSON-shaped substring and returned it without a schema or geometry gate. The frontend rendered before reporting validation errors and could announce success despite those errors. Citation membership in a list did not establish that a rule applied to a described condition. The HTML also inserted model descriptions through `innerHTML`, and its referenced A-Frame CDN asset returned HTTP 404 during verification.
+## updation
 
 The revised version validates request fields and model module selections, constructs geometry from controlled templates, and rejects failed scenes before delivery. Descriptions, actions, conditions and citations come from a versioned catalog. Untrusted text is not injected as HTML. Frontend and backend share an origin, Waitress replaces debug mode, provider errors are sanitized, and A-Frame assets are bundled locally. Live inference requires a demo token and has bounded calls and concurrency.
 
-The composer’s freedom is deliberately reduced: it chooses supported modules, rather than inventing arbitrary hazards, numerical constraints or regulatory interpretations. This makes the delivered prototype more testable but limits generative expressiveness. Explain that tradeoff instead of implying unrestricted natural-language scene generation.
+**The composer’s freedom is deliberately reduced: it chooses supported modules, rather than inventing arbitrary hazards, numerical constraints or regulatory interpretations. This makes the delivered prototype more testable but limits generative expressiveness. Explain that tradeoff instead of implying unrestricted natural-language scene generation.**
 
 ## Mapping to the proposal
 
