@@ -13,7 +13,11 @@ pinned: false
 A working research prototype based on the supplied five-layer construction-safety proposal. It provides constrained composition, deterministic site synthesis, server-side validation, 2D/WebXR delivery, and a small practice-feedback loop. It runs without an API key; OpenRouter and Ollama can optionally select the module mix.
 
 
+<img width="766" height="422" alt="image" src="https://github.com/user-attachments/assets/b836bcae-58cf-4c96-b541-b1f22c8d7a38" />
 
+<img width="784" height="433" alt="image" src="https://github.com/user-attachments/assets/555fa617-e401-4c19-82ed-ce0360d980bf" />
+
+<img width="707" height="347" alt="image" src="https://github.com/user-attachments/assets/55683dd2-cabe-4328-8725-6b553b0b4ec8" />
 
 
 
@@ -42,9 +46,6 @@ The supported setting is a **24 × 20 m generic teaching yard** with five curate
 
 The server checks catalog pairing, scoped conditions, finite geometry, site bounds, 1 m module separation, category coverage and approach-point reachability on a 0.5 m grid with a 0.35 m observer allowance. A deterministic seed reproduces the procedural result; live model selection is not guaranteed reproducible. Export the full scene and composer output for replay/provenance.
 
-Hazards intentionally represent unsafe conditions. Passing the gate means the **encoded teaching constraints** passed; it does not certify a safe worksite, complete OSHA compliance, structural support, guardrail load resistance, or educational effectiveness.
-
-Practice is **cued category classification**, with observations and locations supplied. It is not unaided hazard detection, gaze tracking, transfer testing or a protected examination. The browser receives the answer key for instructor review. Local timestamps measure first module selection to answer, including time away from that module; a page-visibility interruption flag is recorded. Results are editable browser data, not tamper-resistant research records.
 
 The browser retains a category profile and the last 100 sessions in local storage. Older sessions are removed while cumulative profile counts remain. Data are not shared across devices or uploaded to a research database. Exports contain the prompt, scenario and profile; use synthetic examples for demonstrations.
 
