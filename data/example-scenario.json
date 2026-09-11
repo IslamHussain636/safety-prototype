@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "catalog_version": "2026-09-11.1",
+    "composer_output": null,
+    "engine_version": "2.0.0",
+    "generation_ms": 8.91,
+    "notes": [
+      "Generic teaching yard only; roof, BIM/IFC, weather, and arbitrary site geometry are not implemented.",
+      "Adaptive targeting uses local practice counts, not a learned RL/GAN policy."
+    ],
+    "provider": {
+      "latency_ms": 0,
+      "requested_model": null,
+      "source": "procedural",
+      "usage": {}
+    },
+    "request": {
+      "focus": [],
+      "level": "intermediate",
+      "profile": {},
+      "prompt": "Include fall and electrical hazards",
+      "seed": 42,
+      "source": "procedural",
+      "strategy": "procedural"
+    }
+  },
+  "scenario": {
+    "catalog_version": "2026-09-11.1",
+    "hazards": [
+      {
+        "action": "Stop exposure to the edge and have appropriate fall protection provided before work resumes.",
+        "approach": {
+          "x": 3.74,
+          "y": 15.64
+        },
+        "asset": "platform",
+        "conditions": {
+          "fall_protection": false,
+          "height_ft": 8,
+          "unprotected_edge": true
+        },
+        "description": "A worker stands on an 8 ft elevated construction platform with an open edge and no fall protection.",
+        "footprint_depth_m": 3,
+        "footprint_width_m": 4,
+        "id": "H1",
+        "intentional_training_hazard": true,
+        "observation": "Elevated platform: 8 ft above the lower level. One edge is open. No net or personal fall arrest system is provided.",
+        "osha_ref": "1926.501(b)(1)",
+        "severity": "high",
+        "source_url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.501",
+        "type": "fall",
+        "x": 3.74,
+        "y": 12.64
+      },
+      {
+        "action": "Keep workers clear and have qualified personnel establish appropriate electrical protection before work proceeds.",
+        "approach": {
+          "x": 11.6,
+          "y": 7.24
+        },
+        "asset": "panel",
+        "conditions": {
+          "contact_possible": true,
+          "effective_guard": false,
+          "energized": true
+        },
+        "description": "An open energized panel has accessible live parts within a worker's reach.",
+        "footprint_depth_m": 3,
+        "footprint_width_m": 4,
+        "id": "H2",
+        "intentional_training_hazard": true,
+        "observation": "Panel door open; circuit energized; exposed terminals within reach of the work position. No effective insulating guard.",
+        "osha_ref": "1926.416(a)(1)",
+        "severity": "high",
+        "source_url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.416",
+        "type": "electrical",
+        "x": 11.6,
+        "y": 4.24
+      },
+      {
+        "action": "Stop entry and have a competent person arrange an appropriate protective system before workers enter.",
+        "approach": {
+          "x": 20.05,
+          "y": 7.09
+        },
+        "asset": "trench",
+        "conditions": {
+          "depth_ft": 6,
+          "occupied": true,
+          "protective_system": false,
+          "stable_rock": false
+        },
+        "description": "A worker occupies a 6 ft deep trench in soil with no protective system.",
+        "footprint_depth_m": 3,
+        "footprint_width_m": 4,
+        "id": "H3",
+        "intentional_training_hazard": true,
+        "observation": "Trench depth: 6 ft; material is soil, not stable rock. A worker is inside. No shoring, shielding, or protective slope.",
+        "osha_ref": "1926.652(a)(1)",
+        "severity": "high",
+        "source_url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.652",
+        "type": "caught_in_between",
+        "x": 20.05,
+        "y": 4.09
+      },
+      {
+        "action": "Remove the worker from exposure, secure the materials, and provide appropriate head protection.",
+        "approach": {
+          "x": 11.53,
+          "y": 15.59
+        },
+        "asset": "materials",
+        "conditions": {
+          "helmet_present": false,
+          "overhead_objects": true
+        },
+        "description": "A worker without a protective helmet is beneath elevated loose construction materials.",
+        "footprint_depth_m": 3,
+        "footprint_width_m": 4,
+        "id": "H4",
+        "intentional_training_hazard": true,
+        "observation": "Loose materials are stored overhead; a worker below wears no protective helmet.",
+        "osha_ref": "1926.100(a)",
+        "severity": "high",
+        "source_url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.100",
+        "type": "struck_by",
+        "x": 11.53,
+        "y": 12.59
+      }
+    ],
+    "level": "intermediate",
+    "required_categories": [
+      "fall",
+      "electrical"
+    ],
+    "scenario_id": "c2db1e4293fdc215",
+    "schema_version": "2.0.0",
+    "seed": 42,
+    "site_depth_m": 20,
+    "site_type": "Construction training yard",
+    "site_width_m": 24,
+    "spawn": {
+      "x": 12,
+      "y": 19
+    },
+    "strategy": "procedural",
+    "targeted_weak_category": null
+  },
+  "validation": {
+    "checks": [
+      "Catalog and citation pairing",
+      "Scoped hazard conditions",
+      "Finite geometry and site bounds",
+      "1 m module separation",
+      "0.5 m grid approach reachability",
+      "Required category coverage"
+    ],
+    "errors": [],
+    "intentional_hazards": 4,
+    "limitations": [
+      "Teaching-rule checks only; not regulatory certification.",
+      "Reachability is a 2D approximation, not a physics or structural-support simulation.",
+      "Catalog scenarios and teaching effectiveness still require independent expert review."
+    ],
+    "passed": true
+  }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PCGML | Construction safety lab</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script defer src="/static/app.js"></script>
+</head>
+<body>
+<header><a class="brand" href="/" aria-label="PCGML home"><span class="brand-icon">P</span> PCGML <span> / Construction safety lab</span></a><span class="badge">RESEARCH PROTOTYPE · v2</span></header>
+<main>
+  <section class="intro"><div><p class="eyebrow">COMPOSE → SYNTHESIZE → CHECK → PRACTICE</p><h1>Build a scenario. Test the constraints.</h1><p>Explore a construction training yard, classify hazards, and target the next session using practice results.</p></div><span id="connection" class="connection" role="status">Connecting to backend…</span></section>
+  <div class="workspace">
+    <aside class="panel controls">
+      <h2>Scenario controls</h2>
+      <label for="prompt">Instructor intent</label><textarea id="prompt" maxlength="2000" rows="4">Include an unprotected elevated edge and an electrical hazard for an intermediate trainee.</textarea>
+      <p class="hint">Five curated modules in a generic yard. Roof geometry, BIM/IFC and weather are outside this prototype.</p>
+      <label for="strategy">Generation strategy</label><select id="strategy"><option value="procedural">Procedural · seeded variation</option><option value="adaptive">Adaptive · target weaker categories</option><option value="static">Static · fixed baseline</option></select>
+      <div class="two-fields"><div><label for="level">Experience</label><select id="level"><option value="apprentice">Apprentice · 3</option><option value="intermediate" selected>Intermediate · 4</option><option value="experienced">Experienced · 5</option></select></div><div><label for="seed">Layout seed</label><input id="seed" type="number" min="0" max="2147483644" value="42" step="1"></div></div>
+      <p class="hint">Counts are a workload heuristic. Explicit targets may increase them; difficulty has not been calibrated.</p>
+      <label for="focus">Required category</label><select id="focus"><option value="">Infer from prompt</option></select>
+      <label for="source">Composer</label><select id="source"><option value="procedural">No-key procedural composer</option><option value="openrouter">OpenRouter · server-configured model</option><option value="ollama">Ollama · self-hosted model</option></select>
+      <div id="tokenWrap" hidden><label for="accessToken">Demo access token</label><input id="accessToken" type="password" autocomplete="off" placeholder="APP_ACCESS_TOKEN, not your API key"><p class="hint">The model API key stays on the server. This access token is kept only in this page’s memory.</p></div>
+      <button id="generate" class="primary" disabled>Generate scenario</button><button id="batch" class="secondary" disabled>Compare 3 layouts</button>
+      <p id="status" class="status" role="status" aria-live="polite">Ready. Procedural mode needs no API key.</p>
+      <details><summary>What is implemented?</summary><p>Curated knowledge → constrained module selection → seeded placement → server checks → 2D and WebXR views.</p><p>Adaptation is a performance-based heuristic. No learned PCGML/RL policy, BIM ingestion, physics validation or expert sign-off is claimed.</p></details>
+    </aside>
+    <div class="results">
+      <div class="metrics" aria-label="Scenario metrics"><div><span>Delivery gate</span><strong id="gate">—</strong></div><div><span>Hazard modules</span><strong id="count">—</strong></div><div><span>Generation</span><strong id="latency">—</strong></div><div><span>Adaptive target</span><strong id="target">—</strong></div></div>
+      <section class="panel scene-panel">
+        <div class="panel-head"><h2 id="sceneTitle">Construction training yard</h2><div class="view-buttons"><button id="view2d" class="selected" aria-pressed="true">2D plan</button><button id="view3d" aria-pressed="false">3D / VR</button></div></div>
+        <div id="empty" class="empty"><span class="empty-number">01</span><h3>Start with a reproducible layout</h3><p>Generate a scenario to inspect its modules and validation evidence.</p></div>
+        <div id="planWrap" hidden><svg id="plan" viewBox="0 0 760 620" role="img" aria-label="Interactive construction training yard plan"></svg><p class="hint">One metre grid. Numbered modules are selectable; dashed lines show observer approach points, not validated walking routes.</p></div>
+        <div id="vrWrap" hidden><div id="vrMount"></div><p id="vrStatus" class="hint">Loading 3D renderer…</p><p class="hint">Desktop: WASD and drag to look. VR requires HTTPS or localhost and a compatible headset. Geometry is schematic; collision blocking and eye tracking are not implemented.</p></div>
+        <div class="scene-footer"><span id="sceneMeta">No scenario loaded</span><button id="export" class="text-button" disabled>Export scenario JSON ↓</button></div>
+      </section>
+      <div class="bottom-grid">
+        <section class="panel"><h2 id="detailTitle">Inspect a module</h2><div id="detail"><p class="muted">Select a numbered module in the plan or 3D view.</p></div></section>
+        <section class="panel"><h2>Practice & adaptation</h2><p class="hint">Cued category classification: locations and observations are supplied. This is not a test of unaided hazard recognition.</p><div class="button-row"><button id="startPractice" class="primary" disabled>Start practice</button><button id="finishPractice" class="secondary" hidden>Finish & score</button></div><p id="practiceStatus" role="status">Completed sessions update a profile stored in this browser.</p><div id="practiceResult"></div><div class="button-row"><button id="exportSessions" class="text-button">Export practice log ↓</button><button id="resetProfile" class="text-button">Reset local profile</button></div></section>
+      </div>
+      <section class="panel" id="validationPanel"><h2>Validation evidence</h2><p class="muted">The server must approve every scenario before it is displayed.</p><div id="validation"></div></section>
+      <section class="panel" id="comparison" hidden><h2>Layout comparison</h2><p class="hint">Three seeded scenarios. Live-model mode reuses one composition; procedural mode may vary category mix too. Differences do not establish learning effectiveness.</p><div id="comparisonCards" class="comparison-cards"></div><pre id="diversity"></pre><button id="exportBatch" class="text-button">Export comparison JSON ↓</button></section>
+      <details id="jsonPanel" class="panel"><summary>Scenario JSON & generation provenance</summary><pre id="raw"></pre></details>
+    </div>
+  </div>
+  <footer>Teaching-rule validation ≠ regulatory certification. Intentionally unsafe conditions are learning targets. Independent safety-expert review is still required before real training use.</footer>
+</main>
+</body></html>

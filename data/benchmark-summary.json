@@ -1,0 +1,40 @@
+{
+  "engine_version": "2.0.0",
+  "kind": "synthetic_local_engineering_benchmark",
+  "source": "procedural_only_no_model_calls",
+  "summary": {
+    "static": {
+      "runs": 30,
+      "passed": 30,
+      "unique_scenarios": 1,
+      "median_ms": 4.477,
+      "weak_category_coverage": 0.0,
+      "adjacent_pair_count": 29,
+      "mean_category_jaccard_distance": 0.0
+    },
+    "procedural": {
+      "runs": 30,
+      "passed": 30,
+      "unique_scenarios": 30,
+      "median_ms": 5.124,
+      "weak_category_coverage": 0.7666666666666667,
+      "adjacent_pair_count": 29,
+      "mean_category_jaccard_distance": 0.3172
+    },
+    "adaptive": {
+      "runs": 30,
+      "passed": 30,
+      "unique_scenarios": 30,
+      "median_ms": 5.309,
+      "weak_category_coverage": 1.0,
+      "adjacent_pair_count": 29,
+      "mean_category_jaccard_distance": 0.3172
+    }
+  },
+  "limitations": [
+    "Fixed synthetic profile; no trainee data or learning-effect measurements.",
+    "Passing rates cover only encoded constraints, not complete OSHA compliance.",
+    "Static baseline has 3 modules; other strategies use 4, so latency is not a controlled authoring-efficiency comparison.",
+    "Timing depends on hardware and runtime. No model accuracy or latency is measured."
+  ]
+}
